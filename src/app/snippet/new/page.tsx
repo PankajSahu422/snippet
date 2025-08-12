@@ -4,6 +4,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/dist/server/api-utils'
+import Link from 'next/link'
 import React from 'react'
 
 const CreateSnippetPage = () => {
@@ -13,13 +14,13 @@ const CreateSnippetPage = () => {
     const title = fromData.get("title") as string;
     const code = fromData.get("code") as string;
     
-    const snippet = await prisma.snippet.create({
-      data:{
-        title,
-        code
-      }
-    });
-    console.log("created snippet", snippet);
+    // const snippet = await prisma.snippet.create({
+    //   data:{
+    //     title,
+    //     code
+    //   }
+    // });
+    // console.log("created snippet", snippet);
     
     //redirect("/");
 
@@ -34,7 +35,7 @@ const CreateSnippetPage = () => {
         <Label>Code</Label>
         <Textarea name='code' id='code' />
       </div>
-      <Button type='submit' className='my-4'>New</Button>
+      <Link href={""}><Button type='submit' className='my-4 bg-black text-white w-full'>New</Button></Link>
     </form>
   )
 }
